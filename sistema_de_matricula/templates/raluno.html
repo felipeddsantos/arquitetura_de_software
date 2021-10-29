@@ -1,0 +1,98 @@
+<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Página Principal</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <div class="btn-group dropdown">
+          <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Cadastro
+          </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="rAluno">Aluno</a>
+    <a class="dropdown-item" href="rProfessor">Professor</a>
+    <a class="dropdown-item" href="rCoordenador">Coordenador</a>
+  </div>
+      <li class="nav-item active">
+        <div class="btn-group dropdown">
+          <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Login
+          </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="lAluno">Aluno</a>
+    <a class="dropdown-item" href="lProfessor">Professor</a>
+    <a class="dropdown-item" href="lCoordenador">Coordenador</a>
+  </div>
+</div>
+</nav>
+<form method='POST' action='aAluno'>
+    <div class="form-group col-md-5">
+      <label for="validationServer01">Nome</label>
+      <input type="text" class="form-control" id="validationServer01" name = "nome" placeholder="Insira seu primeiro nome" required>
+    </div>
+    <div class="form-group col-md-5">
+      <label for="validationServer02">Sobrenome</label>
+      <input type="text" class="form-control" id="validationServer02" name = "sobrenome" placeholder="Insira seu sobrenome" required>
+    </div>
+    {% if trig2 == '' %}
+    <div class="form-group col-md-5">
+      <label for="validationServerUsername">Matrícula</label>
+      <input type="text" class="form-control" id="validationServerUsername" placeholder="00000AAA000" name = "matricula" required>
+    {% endif %}
+    {% if trig2 == 'matricula' %}
+    <div class="form-group col-md-5">
+      <label for="validationServerUsername">Matrícula</label>
+      <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="00000AAA000" name = "matricula" required>
+      <div class="invalid-feedback">
+          Aluno já cadastrado.
+      </div>
+      {% endif %}
+    </div>
+    <div class="form-group col-md-5">
+    <label for="exampleInputEmail1">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" name = "email" aria-describedby="emailHelp" placeholder="Insira o email">
+    </div>
+    <div class="form-group col-md-5">
+      <label for="inputPassword4">Senha</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Insira uma senha segura" name = "senha" required>
+    </div>
+    {% if trig1 == '' %}
+    <div class="form-group col-md-5">
+      <label for="inputPassword4">Confirmar Senha</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Repita a senha" name = "senha2" required>
+      {% endif %}
+    {% if trig1 == 'senha' %}
+    <div class="form-group col-md-5">
+      <label for="inputPassword4">Confirmar Senha</label>
+      <input type="password" class="form-control is-invalid" id="inputPassword4" placeholder="Repita a senha" name = "senha2" required>
+      <div class="invalid-feedback">
+          As senhas não conferem.
+      </div>
+      {% endif %}
+    </div>
+  <div class="form-group col-md-5">
+    <label for="inputAddress">Data de Nascimento</label>
+    <input type="date" class="form-control" id="inputData" placeholder="01/01/1999" name = "nascimento" required>
+  </div>
+  <div class="form-group col-md-5">
+    <label for="inputAddress">Telefone</label>
+    <input type="text" class="form-control" id="inputContry" placeholder="(12) 1234-5678" name = "telefone" required>
+  </div>
+    <div class="form-group col-md-5">
+      <label for="inputCountry">Curso</label>
+      <input type="text" class="form-control" id="inputCountry" placeholder="Insira seu curso" name = "curso" required>
+    </div>
+  <div class="form-group col-md-5">
+     <button type="submit" class="btn btn-primary bnt-lg">Cadastrar</button>
+  </div>
+</form>
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>

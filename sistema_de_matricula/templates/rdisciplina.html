@@ -1,0 +1,72 @@
+<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="pCoordenador">Página Principal</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="rDisciplina">Cadastrar Disciplina <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="matriculasCoordenador">Matriculas<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="logout">Sair<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<form method='POST' action='aDisciplina'>
+    <div class="form-group col-md-5">
+      <label for="validationServer01">Nome</label>
+      <input type="text" class="form-control" id="validationServer01" name = "nome" placeholder="Insira o nome da disciplina" required>
+    </div>
+    {% if trig1 == '' %}
+    <div class="form-group col-md-5">
+      <label for="validationServer02">Código</label>
+      <input type="text" class="form-control" id="validationServer02" placeholder="Insira o código da disciplina" name = "codigo" required>
+      {% endif %}
+    {% if trig1 == 'codigo' %}
+    <div class="form-group col-md-5">
+      <label for="validationServer03">Código</label>
+      <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="Insira o código da disciplina" name = "codigo" required>
+      <div class="invalid-feedback">
+          Disciplina já cadastrada.
+      </div>
+      {% endif %}
+    </div>
+    <div class="form-group col-md-5">
+    <label for="validationServer04">Carga Horária</label>
+    <input type="text" class="form-control" id="validationServer04" name = "horario" aria-describedby="emailHelp" placeholder="Carga horária da disciplina" required>
+    </div>
+    <div class="form-group col-md-5">
+      <label for="validationServer05">Unidade Acadêmica</label>
+      <input type="text" class="form-control" id="validationServer05" placeholder="Unidade acadêmica ofertante" name = "unidade" required>
+    </div>
+    {% if trig2 == '' %}
+    <div class="form-group col-md-5">
+      <label for="validationServer06">Professor</label>
+      <input type="text" class="form-control" id="validationServer06" placeholder="Insira o registro do professor" name = "registro_professor" required>
+      {% endif %}
+    {% if trig2 == 'professor' %}
+    <div class="form-group col-md-5">
+      <label for="validationServer07">Professor</label>
+      <input type="text" class="form-control is-invalid" id="validationServer07" placeholder="Insira o registro do professor" name = "registro_professor" required>
+      <div class="invalid-feedback">
+          Professor inexistente.
+      </div>
+      {% endif %}
+    </div>
+  <div class="form-group col-md-5">
+     <button type="submit" class="btn btn-primary bnt-lg">Cadastrar</button>
+  </div>
+</form>
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
